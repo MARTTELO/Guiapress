@@ -1,0 +1,35 @@
+<%- include("./partials/header.ejs") %>
+  <%- include("./partials/homenavbar.ejs") %>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Bem vindo!</h1>
+        <p class="lead">Este é o meu blog</p>
+        <hr class="my-4">
+        <p>Neste blog estou testando todas as funcioknalidades de crud de noje</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      </div>
+      <br>
+      <% articles.forEach(article=> { %>
+        <div class="card">
+          <div class="card-header">
+            <h2>
+              <%= article.title %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <br>
+            <a href="/<%= article.slug %>" class="btn btn-primary">Ler artigo</a>
+          </div>
+        </div>
+
+        <% }) %>
+          <hr>
+          <div class="row">
+            <div class="col col-12">
+              <a href="/articles/page/1"style="float:right">Next >></a>
+            </div>
+                      <hr>
+          </div>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>

@@ -1,0 +1,42 @@
+<%- include("../../partials/header.ejs") %>
+  <%- include("../../partials/homenavbar.ejs") %>
+    <div class="container">
+
+      <br>
+      <% result.articles.rows.forEach(article=> { %>
+        <div class="card">
+          <div class="card-header">
+            <h2>
+              <%= article.title %>
+            </h2>
+          </div>
+          <div class="card-body">
+            <br>
+            <a href="/<%= article.slug %>" class="btn btn-primary">Ler artigo</a>
+          </div>
+        </div>
+
+        <% }) %>
+          <hr>
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <% if (result.page >2) { %>
+                <a class="page-link" href="/articles/page/<%= result.page -1 %>" tabindex="-1">Previous</a>
+                <% }else if(result.page == 2) { %>
+                <a class="page-link" href="/">Previous</a>
+                <% }%>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <% if(result.next) { %>
+                  <a class="page-link" href="/articles/page/<%= result.page + 1 %>">Next</a>
+                  <%} %>
+              </li>
+            </ul>
+          </nav>
+    </div>
+
+    <%- include("../../partials/footer.ejs") %>
